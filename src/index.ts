@@ -1,3 +1,4 @@
+
 import * as core from '@actions/core';
 import {
     Environment,
@@ -64,6 +65,8 @@ async function run(): Promise<void> {
         const sortOrder = core.getInput('sort_order', { required: false }) || 'desc';
         const filterStatus = core.getInput('filter_status', { required: false });
         const type = core.getInput('type', { required: false }) || 'database';
+        const createdAfter = core.getInput('created_after_utc', { required: false }) || undefined;
+        const createdBefore = core.getInput('created_before_utc', { required: false }) || undefined;
 
         const environmentsClient = new EnvironmentsApi(baseUrl);
         environmentsClient.setDefaultAuthentication(apiOpts(apiKey));
@@ -130,8 +133,8 @@ async function run(): Promise<void> {
                     type as 'database' | 'filesystem',
                     sortOrder as 'asc' | 'desc' | undefined,
                     undefined, // limit
-                    undefined, // createdBefore
-                    undefined, // createdAfter
+                    createdBefore, // createdBefore
+                    createdAfter, // createdAfter
                     filterStatus as 'completed' | 'failed' | 'running' | undefined
                 );
                 result.backups = listResponse.body.backups || [];
