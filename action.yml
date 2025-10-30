@@ -56,6 +56,14 @@ inputs:
     description: 'Type of data to backup'
     required: false
     default: 'database'
+  utc_after:
+    description: 'Returns backups created after this UTC timestamp (YYYY-MM-DDTHH:MM:SS format)'
+    required: false
+    type: string
+  utc_before:
+    description: 'Returns backups created before this UTC timestamp (YYYY-MM-DDTHH:MM:SS format)'
+    required: false
+    type: string
 outputs:
   backup_id:
     description: 'ID of the created backup (create operation)'
