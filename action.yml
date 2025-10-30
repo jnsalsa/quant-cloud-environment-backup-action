@@ -56,11 +56,11 @@ inputs:
     description: 'Type of data to backup'
     required: false
     default: 'database'
-  utc_after:
+  created_after_utc:
     description: 'Returns backups created after this UTC timestamp (YYYY-MM-DDTHH:MM:SS format)'
     required: false
     type: string
-  utc_before:
+  created_before_utc:
     description: 'Returns backups created before this UTC timestamp (YYYY-MM-DDTHH:MM:SS format)'
     required: false
     type: string
